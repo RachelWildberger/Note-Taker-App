@@ -4,7 +4,7 @@ const fs = require('fs');
 const note = require('./db/db.json');
 const uuid = require('./helpers/uuid');
 
-const PORT = process.env.port || 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Middleware for parsing JSON and urlencoded form data
