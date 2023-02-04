@@ -9,7 +9,7 @@
   - [Questions](#questions)
 
   ## Description 
-  This application called Note Taker can be used to write and save notes. This app uses an Express.js back end and saves and retrieves note data from a JSON file. 
+  This application called Note Taker can be used to write and save notes. This app uses an Express.js back end and saves and retrieves note data from ``db.json`` file using the ``fs module``. 
 
   ## Installation
   Installation of [Express](https://expressjs.com/)
