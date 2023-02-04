@@ -1,21 +1,17 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text"
-    },
-    {
-        "title": "Grocery list",
-        "text": "bananas\napples\nbread",
-        "id": "80b1"
-    },
-    {
-        "title": "Laundry",
-        "text": "shirts",
-        "id": "f776"
-    },
-    {
         "title": "To-dos",
-        "text": "wash car\ndo laundry\npick up cookies",
-        "id": "761f"
+        "text": "wash car\ngrocery shop\ndo laundry\ngive dog a bath",
+        "id": "f560"
+    },
+    {
+        "title": "Grocery List",
+        "text": "apples\nbread\nalmond milk\neggs\nwine",
+        "id": "8c82"
+    },
+    {
+        "title": "Fix-it List",
+        "text": "patch hole in wall\nreplace light bulbs\nreplace front door mat\n\n",
+        "id": "decb"
     }
 ]

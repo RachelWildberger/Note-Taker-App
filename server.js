@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const note = require('./db/db.json');
 const uuid = require('./helpers/uuid');
 
 const PORT = process.env.PORT || 3001;
@@ -12,12 +11,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// routes for API/notes
+// routes for APIs
 app.get('/api/notes', (req, res) =>
     res.sendFile(path.join(__dirname, './db/db.json'))
 );
 
-// post to add new note
+// post to add new note to db.json
 app.post('/api/notes', (req, res) => {
     const note = JSON.parse(fs.readFileSync('./db/db.json'));
     const { title, text } = req.body;
@@ -27,42 +26,38 @@ app.post('/api/notes', (req, res) => {
             title,
             text,
             id: uuid(),
-            
         };
-
         note.push(newNote);
 
         const response = {
             status: 'success',
             body: newNote,
-            
         };
 
         console.log(response);
         res.status(201).json(response);
-      } else {
+    } else {
         res.status(500).json('Error in posting note');
-      }
-
+    }
 
     fs.writeFileSync('./db/db.json', JSON.stringify(note), "utf-8");
     res.json(note);
 });
 
-//delete notes
-
-// remove note by req.params.id, json, 
-// filter by id
+// BONUS delete notes
 app.delete('/api/notes/:id', (req, res) => {
-
+    const note = JSON.parse(fs.readFileSync('./db/db.json'));
+    const removeNote = note.filter((delNote) => delNote.id !== req.params.id);
+    fs.writeFileSync('./db/db.json', JSON.stringify(removeNote));
+    res.json(removeNote);
 });
 
-// GET HTML Route for homepage
+// GET Route for homepage
 app.get('/', (req, res) =>
     res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
-// GET HTML Route for notes page
+// GET Route for notes page
 app.get('/notes', (req, res) =>
     res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
